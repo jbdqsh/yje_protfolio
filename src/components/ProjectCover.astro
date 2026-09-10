@@ -1,0 +1,34 @@
+---
+import type { Project } from '../data/projects';
+import CareCover from './covers/CareCover.astro';
+import EducationCover from './covers/EducationCover.astro';
+import KnowledgeCover from './covers/KnowledgeCover.astro';
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<div class:list={['project-cover', `cover-${project.cover}`]}>
+  <div class="cover-label mono">
+    <span>
+      {project.cover === 'care'
+        ? 'CARE OPERATIONS'
+        : project.cover === 'education'
+          ? 'EDUCATION, CONNECTED'
+          : 'KNOWLEDGE, REIMAGINED'}
+    </span>
+    <span>{project.kind === 'concept' ? '概念界面' : '界面示意'}</span>
+  </div>
+  <svg viewBox="0 0 620 370" width="620" height="370" role="img" aria-label={project.coverAlt}>
+    {project.cover === 'care' && <CareCover />}
+    {project.cover === 'education' && <EducationCover />}
+    {project.cover === 'knowledge' && <KnowledgeCover />}
+  </svg>
+  <div class="cover-bottom mono">
+    <span>
+      {project.kind === 'concept' ? 'CONCEPT EXPLORATION' : 'DESIGNED AROUND REAL WORKFLOWS'}
+    </span>
+    <span>↗</span>
+  </div>
+</div>

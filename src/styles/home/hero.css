@@ -1,0 +1,241 @@
+.hero {
+  padding-top: 39px;
+}
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.8px;
+}
+.hero-kicker > .mono {
+  color: var(--muted);
+}
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b614c;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+.availability i,
+.about-intent i {
+  width: 6px;
+  height: 6px;
+  background: #6f9364;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #6f93640b;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+  padding-block: 66px 72px;
+}
+.hero-copy h1 {
+  font-size: clamp(48px, 5vw, 70px);
+  font-weight: 550;
+  letter-spacing: -3px;
+  line-height: 1.27;
+}
+.hero-copy h1 > span {
+  display: block;
+}
+.hero-copy > p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 410px;
+  line-height: 2;
+  margin-top: 26px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 31px;
+}
+.hero-art {
+  margin-left: 12px;
+  padding: 22px 23px 17px;
+  border-radius: 6px;
+  background: #eaf0e5;
+  position: relative;
+  transform: rotate(-1.5deg);
+}
+.art-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  letter-spacing: 0.7px;
+  color: #52684f;
+}
+.art-topline > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.art-topline i {
+  width: 5px;
+  height: 5px;
+  background: #819970;
+  display: inline-block;
+  border-radius: 50%;
+}
+.system-illustration {
+  width: 100%;
+  height: auto;
+  margin-block: 8px;
+}
+.art-bottomline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: #53694e;
+  border-top: 1px solid #d3dece;
+  padding-top: 12px;
+}
+.art-bottomline .mono {
+  font-size: 8px;
+}
+.hero-bottom {
+  border-block: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 19px;
+}
+.hero-bottom > span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.hero-bottom > a {
+  font-size: 11px;
+}
+.hero-bottom > a > span {
+  margin-left: 20px;
+}
+@media (max-width: 1024px) {
+  .hero-grid {
+    gap: 18px;
+    padding-block: 54px 60px;
+  }
+  .hero-copy h1 {
+    font-size: 51px;
+    letter-spacing: -2px;
+  }
+  .hero-art {
+    padding: 15px;
+    margin-left: 0;
+  }
+  .hero-copy > p {
+    font-size: 12px;
+  }
+  .hero-actions {
+    gap: 9px;
+  }
+  .hero-actions .button {
+    gap: 15px;
+    padding-inline: 15px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 800px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    padding-block: 45px;
+  }
+  .hero-copy h1 {
+    font-size: 66px;
+  }
+  .hero-copy > p {
+    max-width: 450px;
+    font-size: 13px;
+  }
+  .hero-art {
+    max-width: 550px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 22px;
+  }
+  .hero-actions .button {
+    padding-inline: 22px;
+    font-size: 13px;
+  }
+  .hero-kicker {
+    font-size: 9px;
+  }
+  .hero-copy h1 > span:nth-child(2) {
+    display: inline;
+  }
+  .hero-copy h1 > span:nth-child(3) {
+    display: block;
+  }
+}
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 24px;
+  }
+  .hero-kicker {
+    align-items: start;
+    gap: 15px;
+    flex-direction: column;
+    font-size: 9px;
+  }
+  .availability {
+    font-size: 10px;
+  }
+  .hero-grid {
+    padding-block: 33px 35px;
+    gap: 35px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(42px, 11.5vw, 65px);
+    letter-spacing: -1.8px;
+    line-height: 1.35;
+  }
+  .hero-copy > p {
+    font-size: 12px;
+    margin-top: 20px;
+    max-width: 390px;
+  }
+  .hero-actions {
+    margin-top: 24px;
+    gap: 10px;
+  }
+  .hero-actions .button {
+    padding-inline: 16px;
+    font-size: 12px;
+    gap: 17px;
+  }
+  .hero-art {
+    padding: 17px 14px 13px;
+    transform: rotate(-1deg);
+  }
+  .art-topline {
+    font-size: 6px;
+  }
+  .art-bottomline {
+    font-size: 8px;
+  }
+  .art-bottomline .mono {
+    font-size: 7px;
+  }
+  .hero-bottom > span {
+    font-size: 7px;
+    letter-spacing: 0.2px;
+  }
+  .hero-bottom > a {
+    font-size: 10px;
+  }
+  .hero-bottom > a > span {
+    margin-left: 8px;
+  }
+  .hero-bottom {
+    padding-block: 16px;
+  }
+}

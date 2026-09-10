@@ -1,0 +1,89 @@
+---
+import { architectureNodes as nodes } from '../data/architecture';
+import { copy } from '../data/site';
+---
+
+<section class="architecture-section section" aria-labelledby="architecture-title">
+  <div class="container">
+    <p class="eyebrow">{copy.architecture.eyebrow}</p>
+    <div class="section-heading">
+      <h2 id="architecture-title">{copy.architecture.title}</h2>
+      <p>{copy.architecture.description}</p>
+    </div>
+    <div class="architecture-workspace">
+      <div class="architecture-map">
+        <div class="map-caption mono">
+          <span>CARE OPERATIONS / SIMPLIFIED</span>
+          <span>↓ DATA FLOW</span>
+        </div>
+        <div class="architecture-flow">
+          {nodes.map((node, i) => (
+            <div class:list={['flow-item', `flow-${node.id}`]}>
+              <button
+                class:list={['architecture-node', { active: i === 0 }]}
+                data-node={node.id}
+                aria-pressed={i === 0}
+                aria-controls="architecture-description"
+              >
+                <span class="node-symbol" aria-hidden="true">
+                  {['↗', '◇', 'ϟ', '≋', '▤'][i]}
+                </span>
+                <span>
+                  <strong>{node.label}</strong>
+                  <span class="mono">{node.technology}</span>
+                </span>
+                <span class="node-index mono">0{i + 1}</span>
+              </button>
+            </div>
+          ))}
+        </div>
+        <p class="map-hint">
+          <span aria-hidden="true">⊙</span> {copy.architecture.hint}
+        </p>
+      </div>
+      <div
+        class="architecture-detail"
+        id="architecture-description"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {nodes.map((node, i) => (
+          <div data-node-panel={node.id} hidden={i !== 0}>
+            <span class="detail-number mono">0{i + 1} / DESIGN NOTE</span>
+            <h3>{node.summary}</h3>
+            <p>{node.detail}</p>
+            <div class="architecture-example">{node.example}</div>
+          </div>
+        ))}
+        <span class="detail-flower" aria-hidden="true">
+          ✳
+        </span>
+      </div>
+    </div>
+    <p class="architecture-footnote">{copy.architecture.note}</p>
+    <noscript>
+      <div class="noscript-details">
+        {nodes.slice(1).map((node) => (
+          <details>
+            <summary>{node.label}</summary>
+            <p>{node.detail}</p>
+            <p>{node.example}</p>
+          </details>
+        ))}
+      </div>
+    </noscript>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-node]').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-node]').forEach((node) => {
+        node.classList.toggle('active', node === button);
+        node.setAttribute('aria-pressed', String(node === button));
+      });
+      document.querySelectorAll<HTMLElement>('[data-node-panel]').forEach((panel) => {
+        panel.hidden = panel.dataset.nodePanel !== button.dataset.node;
+      });
+    });
+  });
+</script>

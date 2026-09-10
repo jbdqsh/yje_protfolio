@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Architecture from '../components/Architecture.astro';
+import NotesList from '../components/NotesList.astro';
+import Contact from '../components/Contact.astro';
+import { profile, skills, copy } from '../data/site';
+import { projects } from '../data/projects';
+import '../styles/home.css';
+---
+
+<BaseLayout>
+  <Hero />
+  <section
+    id="projects"
+    class="container section projects-section"
+    aria-labelledby="projects-title"
+  >
+    <p class="eyebrow">{copy.projects.eyebrow}</p>
+    <div class="section-heading">
+      <h2 id="projects-title">{copy.projects.title}</h2>
+      <p>
+        {copy.projects.description}
+        <span class="section-count mono">(03)</span>
+      </p>
+    </div>
+    <div class="project-list">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+  <section id="about" class="about-section section" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div class="about-identity">
+        <p class="eyebrow">{copy.about.eyebrow}</p>
+        <div class="identity-art" aria-hidden="true">
+          <span class="identity-grid"></span>
+          <span class="identity-monogram">jy.</span>
+          <span class="identity-cross">+</span>
+          <span class="identity-label mono">
+            CURIOUS MIND.
+            <br />
+            THOUGHTFUL CODE.
+          </span>
+          <span class="identity-stamp">
+            严<br />加<br />恩
+          </span>
+        </div>
+        <div class="identity-caption">
+          <span>
+            {profile.name} / {profile.role}
+          </span>
+          <span>{profile.location}</span>
+        </div>
+      </div>
+      <div class="about-copy">
+        <h2 id="about-title">
+          {profile.aboutTitle.split('\n').map((line) => (
+            <span>{line}</span>
+          ))}
+        </h2>
+        {profile.about.map((text) => (
+          <p>{text}</p>
+        ))}
+        <div class="education-list">
+          {profile.education.map((item) => (
+            <div class="education-row">
+              <span class="mono">{item.date}</span>
+              <div>
+                <strong>{item.school}</strong>
+                <span>{item.degree}</span>
+              </div>
+              <span class="education-dot" aria-hidden="true"></span>
+            </div>
+          ))}
+        </div>
+        <span class="about-intent">
+          <i></i>
+          {profile.status} · 英语六级
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="container section skills-section" aria-labelledby="skills-title">
+    <p class="eyebrow">{copy.skills.eyebrow}</p>
+    <h2 id="skills-title">{copy.skills.title}</h2>
+    <div class="skills-grid">
+      {skills.map((group) => (
+        <div class="skill-group">
+          <span class="skill-number mono">/{group.number}</span>
+          <h3>{group.category}</h3>
+          <p>{group.description}</p>
+          <div class="tags">
+            {group.tags.map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <Architecture />
+  <NotesList />
+  <Contact />
+</BaseLayout>

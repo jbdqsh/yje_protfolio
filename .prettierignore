@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+output
+.npm-cache
+.playwright-cli
+package-lock.json
+scripts/browser-review.js
+scripts/interaction-review.js

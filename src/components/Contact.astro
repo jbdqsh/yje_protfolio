@@ -1,0 +1,62 @@
+---
+import { profile, copy } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
+  <div class="container contact-inner">
+    <div>
+      <p class="eyebrow">{copy.contact.eyebrow}</p>
+      <h2 id="contact-title">
+        {copy.contact.title.split('\n').map((line) => (
+          <span>{line}</span>
+        ))}
+      </h2>
+      <p class="contact-description">{copy.contact.description}</p>
+    </div>
+    <div class="contact-actions">
+      <a class="contact-email" href={`mailto:${profile.email}`}>
+        {profile.email}
+        <Icon size={25} />
+      </a>
+      <div class="contact-buttons">
+        <button
+          class="copy-email"
+          data-email={profile.email}
+          data-success={copy.contact.copied}
+          data-fallback={copy.contact.fallback}
+        >
+          <Icon name="copy" size={15} />
+          {copy.contact.copyLabel}
+        </button>
+        <a href={profile.resume} download>
+          {copy.contact.resume}
+          <Icon name="download" size={16} />
+        </a>
+      </div>
+      <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+      <span class="contact-note mono">OPEN TO IDEAS. READY TO BUILD. ↗</span>
+    </div>
+  </div>
+</section>
+<script>
+  const copyButton = document.querySelector<HTMLButtonElement>('.copy-email');
+  copyButton?.addEventListener('click', async () => {
+    const status = document.querySelector<HTMLElement>('#copy-status');
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(copyButton.dataset.email ?? '');
+      if (status) status.textContent = copyButton.dataset.success ?? '已复制';
+    } catch {
+      if (status) status.textContent = copyButton.dataset.fallback ?? '请选中邮箱复制';
+      const email = document.querySelector('.contact-email');
+      if (email) {
+        const range = document.createRange();
+        range.selectNodeContents(email);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
+    }
+  });
+</script>

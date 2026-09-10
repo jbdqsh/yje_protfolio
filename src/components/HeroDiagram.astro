@@ -1,0 +1,115 @@
+<div class="hero-art">
+  <div class="art-topline mono">
+    <span>
+      <i></i> A SYSTEM, NOT JUST CODE
+    </span>
+    <span>FIG. 01</span>
+  </div>
+  <svg
+    class="system-illustration"
+    viewBox="0 0 540 440"
+    role="img"
+    aria-label="原创系统示意图：客户端经过 API 接口进入业务服务，再连接数据库、Redis 缓存与消息队列"
+  >
+    <defs>
+      <pattern id="hero-dots" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#bccdc0" opacity=".65" />
+      </pattern>
+      <filter id="hero-shadow" x="-30%" y="-30%" width="160%" height="170%">
+        <feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#254734" flood-opacity=".06" />
+      </filter>
+      <marker id="hero-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <path d="m1 1 3 2-3 2" fill="none" stroke="#8baa94" />
+      </marker>
+    </defs>
+    <rect width="540" height="440" fill="url(#hero-dots)" />
+    <g fill="none" stroke="#98b29e" stroke-width="1.4" marker-end="url(#hero-arrow)">
+      <path d="M125 107h67q15 0 15 15v34" />
+      <path d="M300 107h25q15 0 15 15v34" />
+      <path d="M268 257v39" />
+      <path d="M268 283H115q-15 0-15 15v22" />
+      <path d="M268 283h150q15 0 15 15v22" />
+    </g>
+    <g filter="url(#hero-shadow)">
+      <rect x="40" y="58" width="141" height="65" rx="8" fill="#fafbf7" stroke="#cbd8ca" />
+      <rect
+        x="56"
+        y="77"
+        width="25"
+        height="21"
+        rx="3"
+        fill="none"
+        stroke="#52715d"
+        stroke-width="1.5"
+      />
+      <path d="M62 103h13m-7-5v5" stroke="#52715d" />
+      <text x="94" y="83" fill="#2c4635" font-size="12" font-family="monospace">
+        Client
+      </text>
+      <text x="94" y="104" fill="#6a7c6e" font-size="10">
+        客户端请求
+      </text>
+      <rect x="312" y="61" width="181" height="65" rx="8" fill="#fafbf7" stroke="#cbd8ca" />
+      <text x="330" y="87" fill="#52715d" font-size="17" font-family="monospace">{`{ }`}</text>
+      <text x="371" y="85" fill="#2c4635" font-size="12" font-family="monospace">
+        RESTful API
+      </text>
+      <text x="371" y="105" fill="#6a7c6e" font-size="10">
+        清晰的接口边界
+      </text>
+      <rect x="128" y="157" width="284" height="102" rx="10" fill="#234d3a" />
+      <rect x="141" y="170" width="258" height="76" rx="5" fill="none" stroke="#4e715c" />
+      <path
+        d="m160 193 9-5 9 5v11l-9 5-9-5zm0 0 9 5 9-5m-9 5v11"
+        stroke="#a6c99e"
+        fill="none"
+        stroke-width="1.4"
+      />
+      <text x="192" y="198" fill="#fff" font-size="18" font-weight="500">
+        业务服务
+      </text>
+      <text x="192" y="221" fill="#b2c8b8" font-size="11" font-family="monospace">
+        Spring Boot · Domain Logic
+      </text>
+      <circle cx="379" cy="188" r="3" fill="#bbd798" />
+      <rect x="35" y="321" width="133" height="70" rx="7" fill="#fafbf7" stroke="#cbd8ca" />
+      <ellipse cx="57" cy="343" rx="8" ry="3" fill="none" stroke="#52715d" />
+      <path d="M49 343v13c0 5 16 5 16 0v-13M49 349c0 5 16 5 16 0" fill="none" stroke="#52715d" />
+      <text x="80" y="350" font-size="12" fill="#2c4635" font-family="monospace">
+        MySQL
+      </text>
+      <text x="80" y="369" font-size="10" fill="#6a7c6e">
+        持久化存储
+      </text>
+      <rect x="203" y="321" width="133" height="70" rx="7" fill="#fafbf7" stroke="#cbd8ca" />
+      <path d="m228 337-9 14h8l-5 13 14-17h-9z" fill="none" stroke="#52715d" />
+      <text x="249" y="350" font-size="12" fill="#2c4635" font-family="monospace">
+        Redis
+      </text>
+      <text x="249" y="369" font-size="10" fill="#6a7c6e">
+        高效缓存
+      </text>
+      <rect x="371" y="321" width="133" height="70" rx="7" fill="#fafbf7" stroke="#cbd8ca" />
+      <path d="M387 341h16v5h-16zm0 10h16v5h-16zm0 10h16v5h-16z" fill="none" stroke="#52715d" />
+      <text x="415" y="350" font-size="12" fill="#2c4635" font-family="monospace">
+        MQ
+      </text>
+      <text x="415" y="369" font-size="10" fill="#6a7c6e">
+        异步解耦
+      </text>
+    </g>
+    <g transform="translate(386 265) rotate(-7)">
+      <rect width="109" height="29" rx="4" fill="#e7edca" />
+      <text x="12" y="19" font-size="10" fill="#526441" font-family="monospace">
+        built with care.
+      </text>
+    </g>
+    <text x="40" y="422" fill="#748675" font-size="9" font-family="monospace">
+      LESS COUPLING. MORE CLARITY.
+    </text>
+  </svg>
+  <div class="art-bottomline">
+    <span>从请求到响应，每一步都有迹可循。</span>
+    <span class="mono">01 — 05</span>
+  </div>
+</div>

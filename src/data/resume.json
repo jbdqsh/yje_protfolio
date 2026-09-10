@@ -1,0 +1,41 @@
+{
+  "name": "严加恩",
+  "role": "后端开发工程师",
+  "email": "3489023486@qq.com",
+  "education": [
+    "2024.07 — 至今 ｜ 江苏大学 ｜ 软件工程 · 硕士在读",
+    "2020.09 — 2024.07 ｜ 徐州工程学院 ｜ 软件工程 · 本科",
+    "本科专业排名前 10%；英语六级。"
+  ],
+  "skills": [
+    "熟悉 Java、Python、C++；使用 Spring Boot、MyBatis-Plus 开发后端项目，熟悉 Spring Cloud。",
+    "熟悉 MySQL、Oracle 数据库设计与 SQL 优化；能够结合业务场景使用 Redis。",
+    "熟悉 Docker、Docker Compose 和 Nginx，具备容器化与多服务编排部署经验。",
+    "具有 Vue、TypeScript、JavaScript 开发经验；使用 AI 编程工具辅助全栈开发，熟悉 LangChain、LangGraph。"
+  ],
+  "projects": [
+    {
+      "name": "众安康",
+      "meta": "2024.10 — 2025.06 ｜ 后端 + Web 开发",
+      "stack": "Spring Boot / Vue / Redis / RocketMQ / MyBatis-Plus / Spring Security / WebSocket / Elasticsearch",
+      "summary": "面向居家照护与上门服务场景的履约运营平台，覆盖服务购买、合同管理、周期排班、派单、到场打卡和评价反馈。",
+      "work": [
+        "负责服务项目、客户合同、排班工单和人员管理相关接口，参与核心业务流程、领域模型与状态流转完善。",
+        "参与周期排班和服务员分配，根据周期、次数与时长生成工单，结合技能、请假及时间冲突完成派单和改派。",
+        "参与接单、开始与完成服务的状态校验，实现范围打卡及服务前后照片留存。",
+        "基于 RocketMQ 异步触发合同创建、管家分配和周期工单生成，降低交易与履约流程的耦合。"
+      ]
+    },
+    {
+      "name": "教学质量管理与 OBE 达成度分析平台",
+      "meta": "2024.12 — 2025.08 ｜ 后端开发",
+      "stack": "Spring Boot / Vue / Redis / EasyExcel / MyBatis-Plus / Spring Security / MySQL",
+      "summary": "面向高校的综合教学管理平台，统一管理课程、培养方案、课程目标、成绩及归档资料，并支持课程目标和毕业要求达成度分析。",
+      "work": [
+        "参与课程管理、授课班级管理、课程归档和数据字典的数据库设计及后端实现。",
+        "实现通过表格上传进行课程归档的增删改操作。",
+        "实现归档材料的分片上传、秒传及断点下载功能。"
+      ]
+    }
+  ]
+}

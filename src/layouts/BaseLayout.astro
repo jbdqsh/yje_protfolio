@@ -1,0 +1,60 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { profile } from '../data/site';
+import '../styles/global.css';
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const {
+  title = `${profile.name} · Java 后端开发者`,
+  description = '严加恩的个人作品集。关于 Java 后端、业务系统、工程实践，以及把想法变成可用产品的探索。',
+  noindex = false,
+} = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const ogImage = Astro.site ? new URL('/og-cover.png', Astro.site).href : '/og-cover.png';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F7F7F2" />
+    <meta name="robots" content={!Astro.site || noindex ? 'noindex, nofollow' : 'index, follow'} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content={`${profile.name}的作品集`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="严加恩 · Java 后端开发者 · 把复杂业务，做成清晰可靠的系统。"
+    />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      跳到主要内容
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

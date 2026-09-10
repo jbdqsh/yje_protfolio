@@ -1,0 +1,5 @@
+/* Each section owns its base rules and responsive adaptations. */
+@import './home/hero.css';
+@import './home/about.css';
+@import './home/architecture.css';
+@import './home/contact.css';

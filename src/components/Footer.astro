@@ -1,0 +1,29 @@
+---
+import { profile } from '../data/site';
+---
+
+<footer class="site-footer container">
+  <a class="footer-wordmark" href="/">
+    {profile.englishName}
+    <span>®</span>
+  </a>
+  <p>
+    认真构建，持续迭代。
+    <span class="mono">
+      © {new Date().getFullYear()} {profile.name}
+    </span>
+  </p>
+  <div class="footer-links">
+    {profile.github ? (
+      <a href={profile.github} target="_blank" rel="noreferrer">
+        GitHub ↗
+      </a>
+    ) : (
+      <span title="个人 GitHub 地址尚未提供">GitHub · 暂未公开</span>
+    )}
+    <a href={`mailto:${profile.email}`}>邮箱 ↗</a>
+    <a href={profile.resume} download>
+      简历 ↓
+    </a>
+  </div>
+</footer>

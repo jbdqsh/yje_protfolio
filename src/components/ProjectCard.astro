@@ -1,0 +1,51 @@
+---
+import type { Project } from '../data/projects';
+import { copy } from '../data/site';
+import ProjectCover from './ProjectCover.astro';
+import Icon from './Icon.astro';
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<article class:list={['project-row', { 'project-reversed': project.number === '02' }]}>
+  <a
+    class="cover-link"
+    href={`/projects/${project.slug}/`}
+    aria-label={`查看${project.name}项目详情`}
+  >
+    <div aria-hidden="true">
+      <ProjectCover project={project} />
+    </div>
+  </a>
+  <div class="project-copy">
+    <div class="project-meta">
+      <span class="mono">{project.number} /</span>
+      <span>{project.category}</span>
+      {project.kind === 'concept' && <span class="concept-badge">概念设计</span>}
+    </div>
+    <h3>
+      <a href={`/projects/${project.slug}/`}>{project.name}</a>
+    </h3>
+    <p class="project-subtitle">{project.subtitle}</p>
+    <p class="project-summary">{project.summary}</p>
+    <ul class="project-highlights">
+      {project.highlights.map((text) => (
+        <li>
+          <span>↳</span>
+          {text}
+        </li>
+      ))}
+    </ul>
+    <div class="tags">
+      {project.tags.map((tag) => (
+        <span>{tag}</span>
+      ))}
+    </div>
+    <a class="text-link project-link" href={`/projects/${project.slug}/`}>
+      {copy.projects.link}
+      <Icon size={18} />
+    </a>
+  </div>
+</article>

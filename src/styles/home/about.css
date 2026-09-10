@@ -1,0 +1,253 @@
+.about-section {
+  background: #efefe8;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 110px;
+  align-items: center;
+}
+.about-identity > .eyebrow {
+  margin-bottom: 25px;
+}
+.identity-art {
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  background: #e3e7d9;
+  border-radius: 3px;
+}
+.identity-grid {
+  position: absolute;
+  inset: 24px;
+  background-image:
+    linear-gradient(#a8b79629 1px, transparent 1px),
+    linear-gradient(90deg, #a8b79629 1px, transparent 1px);
+  background-size: 26px 26px;
+  border: 1px solid #a8b79630;
+}
+.identity-monogram {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  font:
+    italic 230px/1.1 Georgia,
+    serif;
+  letter-spacing: -20px;
+  color: #3b5840;
+}
+.identity-cross {
+  position: absolute;
+  top: 16px;
+  right: 27px;
+  color: #8c9b7e;
+  font: 32px var(--mono);
+}
+.identity-label {
+  position: absolute;
+  bottom: 26px;
+  left: 29px;
+  font-size: 9px;
+  color: #66775b;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+.identity-stamp {
+  position: absolute;
+  bottom: 27px;
+  right: 28px;
+  line-height: 1.5;
+  font-size: 12px;
+  padding: 6px 8px;
+  border: 1px solid #799269;
+  color: #577044;
+}
+.identity-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.about-copy h2 {
+  font-size: 33px;
+  line-height: 1.5;
+  margin-bottom: 23px;
+}
+.about-copy h2 > span {
+  display: block;
+}
+.about-copy > p {
+  color: #5d685c;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 14px;
+}
+.education-list {
+  margin-top: 27px;
+  border-top: 1px solid #d8ddd0;
+}
+.education-row {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  padding-block: 17px;
+  border-bottom: 1px solid #d8ddd0;
+}
+.education-row > .mono {
+  font-size: 10px;
+  color: var(--muted);
+  flex: 0 0 88px;
+}
+.education-row > div > strong {
+  font-size: 12px;
+  font-weight: 550;
+}
+.education-row > div > span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+.education-dot {
+  width: 5px;
+  height: 5px;
+  background: #91a681;
+  border-radius: 50%;
+  margin-left: auto;
+}
+.about-intent {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 19px;
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 42px;
+  border-block: 1px solid var(--line);
+}
+.skill-group {
+  padding: 28px 24px 30px;
+  border-right: 1px solid var(--line);
+}
+.skill-group:first-child {
+  padding-left: 0;
+}
+.skill-group:last-child {
+  padding-right: 0;
+  border: 0;
+}
+.skill-number {
+  font-size: 10px;
+  color: #60734e;
+}
+.skill-group h3 {
+  font-size: 16px;
+  font-weight: 550;
+  margin-block: 18px 7px;
+}
+.skill-group > p {
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.skill-group .tags {
+  gap: 7px 5px;
+}
+.skill-group .tags > span {
+  font-size: 10px;
+  padding: 4px 6px;
+}
+@media (max-width: 1024px) {
+  .about-grid {
+    gap: 48px;
+  }
+  .identity-art {
+    height: 310px;
+  }
+  .about-copy h2 {
+    font-size: 29px;
+  }
+  .education-row {
+    gap: 14px;
+  }
+  .education-row > .mono {
+    flex-basis: 77px;
+    font-size: 9px;
+  }
+  .about-copy > p {
+    font-size: 12px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .skill-group:nth-child(2) {
+    border-right: 0;
+  }
+  .skill-group:nth-child(3) {
+    padding-left: 0;
+  }
+  .skill-group:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-group:last-child {
+    padding-left: 24px;
+  }
+}
+@media (max-width: 800px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-identity {
+    max-width: 460px;
+  }
+  .identity-art {
+    height: 310px;
+  }
+  .about-copy {
+    max-width: 580px;
+  }
+}
+@media (max-width: 640px) {
+  .about-copy h2 {
+    font-size: 28px;
+  }
+  .identity-art {
+    height: 280px;
+  }
+  .identity-monogram {
+    font-size: 200px;
+  }
+  .identity-caption {
+    font-size: 9px;
+  }
+  .education-row > .mono {
+    flex-basis: 85px;
+  }
+  .skills-grid {
+    margin-top: 25px;
+  }
+  .skill-group {
+    padding: 22px 0 24px 17px;
+  }
+  .skill-group:last-child {
+    padding-left: 17px;
+  }
+  .skill-group:nth-child(odd) {
+    padding-right: 15px;
+  }
+  .skill-group h3 {
+    font-size: 15px;
+  }
+  .skill-group > p {
+    font-size: 9px;
+  }
+  .skill-group .tags > span {
+    font-size: 9px;
+  }
+}
