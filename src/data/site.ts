@@ -2,12 +2,12 @@ export const profile = {
   name: '严加恩',
   englishName: 'JIAEN YAN',
   initials: 'JY',
-  role: 'Java 后端开发者',
+  role: 'Java开发/AI全栈开发',
   headline: ['把复杂业务，', '做成清晰', '可靠的系统。'],
   intro:
     '关注业务背后的逻辑，也在意每一次交付的体验。从服务履约到教学管理，用代码连接真实的问题与可用的答案。',
   email: '3489023486@qq.com',
-  github: undefined as string | undefined,
+  github: 'https://github.com/jbdqsh/',
   resume: '/resume-jiaen-yan.pdf',
   location: '中国 · 江苏',
   status: '寻找后端开发机会',
@@ -33,7 +33,16 @@ export const skills = [
     number: '01',
     category: '后端开发',
     description: '从领域模型到业务接口',
-    tags: ['Java', 'Spring Boot', 'Spring Cloud', 'MyBatis-Plus', 'Spring Security'],
+    tags: [
+      'Java',
+      'Spring Boot',
+      'Spring Cloud',
+      'MyBatis-Plus',
+      'Spring Security',
+      'WebSocket',
+      'EasyExcel',
+      'Knife4j',
+    ],
   },
   {
     number: '02',
@@ -43,15 +52,15 @@ export const skills = [
   },
   {
     number: '03',
-    category: '部署与交付',
-    description: '把本地代码交付成可用服务',
-    tags: ['Docker', 'Docker Compose', 'Nginx', 'Linux'],
+    category: '前端与可视化',
+    description: '从业务界面到三维场景',
+    tags: ['Vue', 'TypeScript', 'JavaScript', 'Pinia', 'Three.js'],
   },
   {
     number: '04',
-    category: '前端与 AI 工具',
-    description: '拓宽从想法到产品的边界',
-    tags: ['Vue', 'TypeScript', 'Python', 'LangChain', 'LangGraph', 'AI 辅助开发'],
+    category: 'AI 与辅助开发',
+    description: '用开发工具与模型拓展产品能力',
+    tags: ['Python', 'LangChain', 'LangGraph', 'Milvus', 'Qdrant'],
   },
 ];
 
@@ -59,7 +68,7 @@ export const copy = {
   projects: {
     eyebrow: 'SELECTED WORK / 01',
     title: '在真实场景中，解决问题。',
-    description: '四个项目，连接业务、数据与使用者。',
+    description: '连接业务、数据与使用者。',
     link: '查看项目详情',
   },
   about: { eyebrow: 'A LITTLE ABOUT ME / 02' },

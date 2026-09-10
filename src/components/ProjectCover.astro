@@ -9,27 +9,16 @@ const { project } = Astro.props;
 const cover = project.images[0];
 ---
 
-<div class:list={['project-media', `media-${project.theme}`]}>
-  <div class="media-heading mono">
-    <span>{project.label}</span>
-    <span>项目实录 / {project.number}</span>
-  </div>
+<div class:list={['project-media', 'project-card-cover', `media-${project.theme}`]}>
   <div class="cover-stage">
     <Image
       src={cover.src}
       alt={cover.alt}
       format="webp"
       widths={[480, 800, 1200].filter((width) => width < cover.src.width).concat(cover.src.width)}
-      sizes="(max-width: 640px) calc(100vw - 80px), (max-width: 800px) calc(100vw - 110px), 560px"
+      sizes="(max-width: 640px) calc(100vw - 96px), (max-width: 1024px) calc((100vw - 200px) / 2), 540px"
       loading="lazy"
       decoding="async"
     />
-  </div>
-  <div class="media-footer">
-    <span>{cover.title}</span>
-    <span>
-      {project.images.length > 1 ? `${project.images.length} 张影像 · 查看项目` : '查看项目'}{' '}
-      <span aria-hidden="true">↗</span>
-    </span>
   </div>
 </div>

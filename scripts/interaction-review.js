@@ -33,7 +33,7 @@ async (page) => {
   verify('Reduced motion disables smooth scroll', await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior) === 'auto');
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('http://127.0.0.1:4321/');
-  verify('Four real projects with one cover each', await page.locator('.project-row').count() === 4 && await page.locator('.cover-stage img').count() === 4 && await page.locator('.concept-badge').count() === 0);
+  verify('Four real projects with one cover each', await page.locator('.project-card').count() === 4 && await page.locator('.cover-stage img').count() === 4 && await page.locator('.concept-badge').count() === 0);
   const context = await page.context().browser().newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const staticPage = await context.newPage();
   await staticPage.goto('http://127.0.0.1:4321/');

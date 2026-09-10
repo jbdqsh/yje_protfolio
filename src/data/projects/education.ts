@@ -21,7 +21,7 @@ export const education: Project = {
     },
   ],
   summary: '把课程、教学归档与目标达成度连接起来，为高校教学管理提供结构化的数据基础。',
-  tags: ['Spring Boot', 'MySQL', 'EasyExcel', 'Vue'],
+  tags: ['Spring Boot', 'MySQL', 'EasyExcel', 'Vue', 'Redis', 'MyBatis-Plus', 'Spring Security'],
   highlights: ['课程与归档的数据建模', '分片上传与断点下载'],
   background:
     '平台面向学院、专业负责人、教师与学生，统一管理基础教学数据、培养方案、课程目标、毕业要求、成绩及课程归档，并支持课程目标和毕业要求达成度分析。',

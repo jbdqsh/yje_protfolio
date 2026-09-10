@@ -1,0 +1,138 @@
+/* Homepage cards are independent of the long-form project detail layout. */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  background: #fdfdf9;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px #18282305;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.project-card:hover {
+  border-color: #aabdaf;
+  box-shadow: 0 14px 36px #1828230b;
+}
+.project-card .cover-link {
+  display: block;
+  border-radius: 12px;
+}
+.project-card-cover {
+  border-radius: 12px;
+}
+.project-card-cover .cover-stage {
+  aspect-ratio: 1.95;
+  padding: 14px;
+}
+.project-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 8px 6px;
+}
+.project-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.project-card-meta .mono {
+  color: var(--green);
+}
+.concept-badge {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+.project-card h3 {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  font-weight: 550;
+}
+.project-card h3 a:hover {
+  color: var(--green);
+}
+.project-card-summary {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-block: 12px 18px;
+}
+.project-card .tags {
+  /* Keep full tags in the document; only the card's visual row is truncated. */
+  display: block;
+  min-width: 0;
+  margin-top: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.project-card .tags > span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 7px;
+  font-size: 0.75rem;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #f0f3ec;
+  border-color: transparent;
+}
+.project-card .tags > span:last-child {
+  margin-right: 0;
+}
+.project-card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-block: 14px 2px;
+  min-height: 44px;
+  color: var(--green);
+  font-size: 0.875rem;
+}
+.project-card-link svg {
+  transition: transform 0.2s;
+}
+.project-card-link:hover svg {
+  transform: translateX(3px);
+}
+@media (max-width: 1024px) {
+  .project-list {
+    gap: 22px;
+  }
+  .project-card {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .project-card-body {
+    padding: 18px 6px 5px;
+  }
+}
+@media (max-width: 640px) {
+  .project-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .project-card h3 {
+    font-size: 1.4rem;
+  }
+  .project-card-body {
+    padding: 18px 6px 4px;
+  }
+}

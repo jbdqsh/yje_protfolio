@@ -27,7 +27,7 @@ export const ventilation: Project = {
     },
   ],
   summary: '连接巷道、设备与实时数据，将在线监测、三维编辑和传感器部署预测整合到一个管理平台。',
-  tags: ['Spring Boot', 'Vue', 'Three.js', 'WebSocket'],
+  tags: ['Spring Boot', 'Vue', 'Three.js', 'WebSocket', 'MySQL', 'Spring Security', 'Pinia'],
   highlights: ['巷道三维编辑与设备绑定', '实时监测与传感器部署预测'],
   background:
     '矿井通风管理需要同时理解空间结构、设备分布与环境变化。项目围绕这一场景，将在线监测、传感器管理、多参数设备管理、历史数据和巷道三维编辑集中到同一平台。',

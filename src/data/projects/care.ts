@@ -42,7 +42,17 @@ export const care: Project = {
     },
   ],
   summary: '连接客户、管家与服务人员，将购买、排班、派单和上门履约串成一条完整的服务链路。',
-  tags: ['Spring Boot', 'Redis', 'RocketMQ', 'Vue'],
+  tags: [
+    'Spring Boot',
+    'Redis',
+    'RocketMQ',
+    'Vue',
+    'MyBatis-Plus',
+    'Spring Security',
+    'WebSocket',
+    'Elasticsearch',
+    'Knife4j',
+  ],
   highlights: ['周期排班与智能派单', '订单到履约的异步解耦'],
   background:
     '居家照护不是一次简单的下单。服务购买之后，还涉及合同生成、多周期排班、人员分配、上门打卡与评价反馈。众安康面向这些连续发生的业务，让不同角色在同一条履约链路中协作。',

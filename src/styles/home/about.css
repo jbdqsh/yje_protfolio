@@ -124,44 +124,6 @@
   color: var(--green);
   margin-top: 19px;
 }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 42px;
-  border-block: 1px solid var(--line);
-}
-.skill-group {
-  padding: 28px 24px 30px;
-  border-right: 1px solid var(--line);
-}
-.skill-group:first-child {
-  padding-left: 0;
-}
-.skill-group:last-child {
-  padding-right: 0;
-  border: 0;
-}
-.skill-number {
-  font-size: 10px;
-  color: #60734e;
-}
-.skill-group h3 {
-  font-size: 16px;
-  font-weight: 550;
-  margin-block: 18px 7px;
-}
-.skill-group > p {
-  font-size: 10px;
-  color: var(--muted);
-  margin-bottom: 22px;
-}
-.skill-group .tags {
-  gap: 7px 5px;
-}
-.skill-group .tags > span {
-  font-size: 10px;
-  padding: 4px 6px;
-}
 @media (max-width: 1024px) {
   .about-grid {
     gap: 48px;
@@ -181,21 +143,6 @@
   }
   .about-copy > p {
     font-size: 12px;
-  }
-  .skills-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .skill-group:nth-child(2) {
-    border-right: 0;
-  }
-  .skill-group:nth-child(3) {
-    padding-left: 0;
-  }
-  .skill-group:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--line);
-  }
-  .skill-group:last-child {
-    padding-left: 24px;
   }
 }
 @media (max-width: 800px) {
@@ -228,26 +175,5 @@
   }
   .education-row > .mono {
     flex-basis: 85px;
-  }
-  .skills-grid {
-    margin-top: 25px;
-  }
-  .skill-group {
-    padding: 22px 0 24px 17px;
-  }
-  .skill-group:last-child {
-    padding-left: 17px;
-  }
-  .skill-group:nth-child(odd) {
-    padding-right: 15px;
-  }
-  .skill-group h3 {
-    font-size: 15px;
-  }
-  .skill-group > p {
-    font-size: 9px;
-  }
-  .skill-group .tags > span {
-    font-size: 9px;
   }
 }
