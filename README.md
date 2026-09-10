@@ -23,20 +23,28 @@ npm run preview
 
 ## 更新内容
 
-| 内容                                        | 位置                       |
-| ------------------------------------------- | -------------------------- |
-| 姓名、邮箱、GitHub、介绍、教育、技术分类    | `src/data/site.ts`         |
-| 项目内容、真实/概念标记、可选源码和演示 URL | `src/data/projects.ts`     |
-| 架构节点与说明                              | `src/data/architecture.ts` |
-| 文章正文与元信息                            | `src/content/notes/*.md`   |
-| 公开版简历资料                              | `src/data/resume.json`     |
-| 颜色、字体、共享样式                        | `src/styles/global.css`    |
+| 内容                                     | 位置                       |
+| ---------------------------------------- | -------------------------- |
+| 姓名、邮箱、GitHub、介绍、教育、技术分类 | `src/data/site.ts`         |
+| 项目顺序与导出入口                       | `src/data/projects.ts`     |
+| 各项目文案、图片序列、可选源码和演示 URL | `src/data/projects/*.ts`   |
+| 真实项目图片                             | `src/assets/projects/`     |
+| 架构节点与说明                           | `src/data/architecture.ts` |
+| 文章正文与元信息                         | `src/content/notes/*.md`   |
+| 公开版简历资料                           | `src/data/resume.json`     |
+| 颜色、字体、共享样式                     | `src/styles/global.css`    |
 
 项目 `kind` 为 `real` 或 `concept`，概念项目会自动显示标记。可选 `github`、`demo` 应填写真实的 HTTPS URL；留空时展示“暂未公开”。个人 GitHub 在 `profile.github` 设置。
 
 新增笔记时填写 `title`、`description`、`category`、`readingTime`、`order`，文件名即访问路径。示例：`src/content/notes/your-note.md` 对应 `/notes/your-note/`。
 
-项目封面是原创 SVG 界面示意，不是生产系统截图。其中图表仅为示例数据；第三个 AI 项目是概念设计。未来引入真实截图时请使用有明确宽高和说明的图片，非首屏图片设置 `loading="lazy"`。
+当前展示四个真实项目：众安康、教学质量与 OBE 分析、矿井智能通风管理、Yojex 论坛。原 AI 知识库概念案例不再展示。论坛目前只有首页截图，因此只介绍可见功能，不推断技术栈、开发职责或成果指标。
+
+每个项目单独维护一个数据文件，类型定义在 `src/data/projects/types.ts`。`images` 是非空图片序列，每项包含导入的图片、标题、替代文字与说明。第一张自动作为首页唯一封面；详情展示完整序列。新增或调整封面只需要调整数据顺序，不必修改页面组件。
+
+众安康展示 4 张图片，通风管理展示 2 张；OBE 和论坛各 1 张。多图使用原生滚动吸附轮播，支持触屏、缩略图、前后按钮、键盘方向键及 Home/End，不自动播放。单图不显示切换控件。无 JavaScript 时仍可滚动和打开原图。图片在构建时生成响应式 WebP，非首屏图片延迟加载；原图入口用于查看细节，不通过裁切或拉伸伪造界面。
+
+素材源来自用户提供的个人项目资料，原文件未改动。众安康的“服务员工单”图含有明文手机号，未复制进仓库或构建资源；将来加入前需先生成脱敏版本并检查原图。公开版 PDF 仍保留原先核实过的两个项目，本轮图片更新不自动改写简历。
 
 ## 公开版简历与分享图
 
@@ -72,7 +80,8 @@ python scripts/generate-media.py --font "C:/Windows/Fonts/msyh.ttc"
 npx playwright-cli -s=portfolio open http://127.0.0.1:4321 --browser chrome
 npx playwright-cli -s=portfolio run-code --filename scripts/browser-review.js
 npx playwright-cli -s=portfolio run-code --filename scripts/interaction-review.js
+npx playwright-cli -s=portfolio run-code --filename scripts/gallery-review.js
 npm run audit:site -- http://127.0.0.1:4321 local
 ```
 
-Lighthouse 需要本机 Chrome，可用 `CHROME_PATH` 指定浏览器路径。测试脚本只操作本地预览；`output/` 中的浏览器配置仅用于本次测试。`npm run format:check` 检查格式，`npm run format` 统一排版。两个 Playwright 脚本是 CLI 所需的函数表达式，不添加结尾分号。
+Lighthouse 需要本机 Chrome，可用 `CHROME_PATH` 指定浏览器路径。测试脚本只操作本地预览；`output/` 中的浏览器配置仅用于本次测试。`npm run format:check` 检查格式，`npm run format` 统一排版。Playwright 脚本是 CLI 所需的函数表达式，不添加结尾分号。

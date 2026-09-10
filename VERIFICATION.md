@@ -1,5 +1,23 @@
 # 验收记录
 
+## 最新变更：真实项目图片与固定导航（2026-09-10）
+
+- 精选项目更新为 4 个真实案例，替换 AI 知识库概念案例；首页每项只渲染 1 张真实封面。
+- 众安康详情含 4 张图、矿井通风含 2 张图；OBE、论坛各 1 张图，不显示无效轮播控件。论坛仅介绍截图可确认的功能。
+- 顶部导航使用 sticky 定位；详情目录和锚点偏移同步适配导航高度。
+- Astro 类型检查：0 errors、0 warnings、0 hints；构建成功，生成 9 个 HTML 页面及 33 个响应式 WebP 资源。
+- 9 个页面在 375、768、1440 像素下共 27 组检查：无横向溢出、无浏览器异常；48 个站内链接及锚点有效。
+- 轮播专项在 375、725、768、1440 像素下通过 173 项断言，覆盖图片数量、导航固定、锚点位置、缩略图、前后按钮、Home/End、原图访问、真实触屏滑动及无 JavaScript 降级。
+- 原功能 17 项回归检查全部通过：移动导航、键盘、架构节点、邮箱复制及降级、简历下载、减少动画与无脚本阅读等。
+- 已查看首页、OBE、横向管理界面与移动长图截图。原始验收结果：`output/browser-review-current.json`、`output/gallery-review-current.json`；截图：`output/playwright/gallery-*.png`、`output/playwright/sticky-header-725.png`。
+- 本地移动端 Lighthouse 首页：Performance 100、Accessibility 100、Best Practices 100、SEO 63；LCP 0.9 秒、CLS 0。SEO 扣分来自本地预览主动禁止索引，未更改该保护策略。报告：`output/lighthouse-screenshots-home.html`。
+- 众安康轮播详情页：Performance 100、Accessibility 100、Best Practices 100、SEO 66；LCP 1.1 秒、CLS 0.034。报告：`output/lighthouse-screenshots-gallery.html`。
+- 含明文手机号的“服务员工单”图未复制到仓库或构建资源，原始资料未修改。公开版 PDF 保持原有两个已核实项目，本轮未重新生成 PDF。
+
+以下为首次交付的历史验收记录，页面数量和 Lighthouse 正式配置测试分数不代表本轮更新后的测量结果。
+
+---
+
 验证时间：2026-09-10。环境：Windows、Node.js 24.19.0、Astro 7.3.2、Chrome、Lighthouse 13.4.1。
 
 ## 构建与代码

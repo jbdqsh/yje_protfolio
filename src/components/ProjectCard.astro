@@ -9,7 +9,7 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class:list={['project-row', { 'project-reversed': project.number === '02' }]}>
+<article class:list={['project-row', { 'project-reversed': Number(project.number) % 2 === 0 }]}>
   <a
     class="cover-link"
     href={`/projects/${project.slug}/`}

@@ -2,7 +2,7 @@
 // Uses the existing browser session; captures every built HTML page at 3 widths.
 async (page) => {
   const root = 'http://127.0.0.1:4321';
-  const routes = ['/', '/projects/care-operations/', '/projects/teaching-quality/', '/projects/knowledge-studio/', '/notes/service-state/', '/notes/async-events/', '/notes/file-transfer/', '/404.html'];
+  const routes = ['/', '/projects/care-operations/', '/projects/teaching-quality/', '/projects/mine-ventilation/', '/projects/yojex-forum/', '/notes/service-state/', '/notes/async-events/', '/notes/file-transfer/', '/404.html'];
   const results = [];
   const errors = [];
   const localLinks = new Set();
@@ -12,6 +12,11 @@ async (page) => {
     for (const route of routes) {
       const response = await page.goto(root + route);
       await page.evaluate(() => document.fonts.ready);
+      for (const image of await page.locator('.cover-stage img').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await image.evaluate(img => img.decode());
+      }
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       const layout = await page.evaluate(() => ({
         width: innerWidth,
         scrollWidth: document.documentElement.scrollWidth,
@@ -21,7 +26,7 @@ async (page) => {
         robots: document.querySelector('meta[name="robots"]')?.getAttribute('content'),
         canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? null,
         links: [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(href => href?.startsWith('/') || href?.startsWith('#')),
-        overflow: [...document.querySelectorAll('main *')].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 1 || r.left < -1); }).slice(0, 8).map(el => el.tagName + '.' + el.className),
+        overflow: [...document.querySelectorAll('main *')].filter(el => { if (el.closest('.gallery-slide')) return false; const r = el.getBoundingClientRect(); return r.width > 0 && (r.right > innerWidth + 1 || r.left < -1); }).slice(0, 8).map(el => el.tagName + '.' + el.className),
       }));
       for (const href of layout.links) localLinks.add(href.startsWith('#') ? route + href : href);
       const name = route === '/' ? 'home' : route.replaceAll('/', '-').replace(/^-|-$/g, '').replace('.html', '');

@@ -1,34 +1,35 @@
 ---
 import type { Project } from '../data/projects';
-import CareCover from './covers/CareCover.astro';
-import EducationCover from './covers/EducationCover.astro';
-import KnowledgeCover from './covers/KnowledgeCover.astro';
+import { Image } from 'astro:assets';
+import '../styles/project-media.css';
 interface Props {
   project: Project;
 }
 const { project } = Astro.props;
+const cover = project.images[0];
 ---
 
-<div class:list={['project-cover', `cover-${project.cover}`]}>
-  <div class="cover-label mono">
-    <span>
-      {project.cover === 'care'
-        ? 'CARE OPERATIONS'
-        : project.cover === 'education'
-          ? 'EDUCATION, CONNECTED'
-          : 'KNOWLEDGE, REIMAGINED'}
-    </span>
-    <span>{project.kind === 'concept' ? '概念界面' : '界面示意'}</span>
+<div class:list={['project-media', `media-${project.theme}`]}>
+  <div class="media-heading mono">
+    <span>{project.label}</span>
+    <span>项目实录 / {project.number}</span>
   </div>
-  <svg viewBox="0 0 620 370" width="620" height="370" role="img" aria-label={project.coverAlt}>
-    {project.cover === 'care' && <CareCover />}
-    {project.cover === 'education' && <EducationCover />}
-    {project.cover === 'knowledge' && <KnowledgeCover />}
-  </svg>
-  <div class="cover-bottom mono">
+  <div class="cover-stage">
+    <Image
+      src={cover.src}
+      alt={cover.alt}
+      format="webp"
+      widths={[480, 800, 1200].filter((width) => width < cover.src.width).concat(cover.src.width)}
+      sizes="(max-width: 640px) calc(100vw - 80px), (max-width: 800px) calc(100vw - 110px), 560px"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="media-footer">
+    <span>{cover.title}</span>
     <span>
-      {project.kind === 'concept' ? 'CONCEPT EXPLORATION' : 'DESIGNED AROUND REAL WORKFLOWS'}
+      {project.images.length > 1 ? `${project.images.length} 张影像 · 查看项目` : '查看项目'}{' '}
+      <span aria-hidden="true">↗</span>
     </span>
-    <span>↗</span>
   </div>
 </div>

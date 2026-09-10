@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import '../styles/project-media.css';
+import '../styles/project-gallery.css';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const multiple = project.images.length > 1;
+const galleryId = `${project.slug}-gallery`;
+---
+
+<project-gallery class:list={['project-gallery', 'project-media', `media-${project.theme}`]}>
+  <div class="media-heading">
+    <h2 id={`${galleryId}-title`}>
+      项目影像 <span class="mono">/ {project.label}</span>
+    </h2>
+    <span class="mono" data-gallery-count aria-live="polite" aria-atomic="true">
+      01 / {String(project.images.length).padStart(2, '0')}
+    </span>
+  </div>
+  <div
+    class="gallery-track"
+    id={galleryId}
+    role="region"
+    aria-labelledby={`${galleryId}-title`}
+    tabindex={multiple ? 0 : undefined}
+  >
+    {project.images.map((item, index) => (
+      <figure
+        class="gallery-slide"
+        aria-label={`${index + 1} / ${project.images.length}：${item.title}`}
+      >
+        <div class="gallery-stage">
+          <Image
+            src={item.src}
+            alt={item.alt}
+            format="webp"
+            widths={[480, 800, 1200, 1800]
+              .filter((width) => width < item.src.width)
+              .concat(item.src.width)}
+            sizes={
+              item.src.height > item.src.width
+                ? '(max-width: 640px) 240px, 340px'
+                : '(max-width: 640px) calc(100vw - 72px), (max-width: 1024px) calc(100vw - 128px), 1120px'
+            }
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </div>
+        <figcaption class="gallery-caption">
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.caption}</p>
+          </div>
+          <a
+            href={item.src.src}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`查看${item.title}原图（新窗口）`}
+          >
+            查看原图 <span aria-hidden="true">↗</span>
+          </a>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  {multiple && (
+    <>
+      <div class="gallery-controls" hidden data-gallery-controls>
+        <div class="gallery-thumbnails" aria-label="选择项目图片">
+          {project.images.map((item, index) => (
+            <button
+              type="button"
+              class="gallery-thumbnail"
+              data-gallery-index={index}
+              aria-label={`第 ${index + 1} 张：${item.title}`}
+              aria-pressed={index === 0}
+              aria-controls={galleryId}
+            >
+              <Image src={item.src} alt="" width={120} format="webp" loading="lazy" />
+              <span>{item.title}</span>
+            </button>
+          ))}
+        </div>
+        <div class="gallery-arrows">
+          <button type="button" data-gallery-prev aria-label="上一张图片" aria-controls={galleryId}>
+            ←
+          </button>
+          <button type="button" data-gallery-next aria-label="下一张图片" aria-controls={galleryId}>
+            →
+          </button>
+        </div>
+      </div>
+      <noscript>
+        <p class="gallery-hint">左右滑动或聚焦图片区域后按方向键，浏览更多图片。</p>
+      </noscript>
+    </>
+  )}
+</project-gallery>
+
+<script>
+  import '../scripts/project-gallery';
+</script>

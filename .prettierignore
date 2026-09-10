@@ -7,3 +7,4 @@ output
 package-lock.json
 scripts/browser-review.js
 scripts/interaction-review.js
+scripts/gallery-review.js

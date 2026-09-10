@@ -59,7 +59,7 @@ export const copy = {
   projects: {
     eyebrow: 'SELECTED WORK / 01',
     title: '在真实场景中，解决问题。',
-    description: '两段项目实践，一次新的探索。',
+    description: '四个项目，连接业务、数据与使用者。',
     link: '查看项目详情',
   },
   about: { eyebrow: 'A LITTLE ABOUT ME / 02' },

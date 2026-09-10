@@ -192,7 +192,7 @@
 .detail-sidebar {
   align-self: start;
   position: sticky;
-  top: 35px;
+  top: calc(var(--header-height) + 24px);
 }
 .detail-sidebar > a {
   display: block;

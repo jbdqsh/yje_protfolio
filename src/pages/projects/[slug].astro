@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectCover from '../../components/ProjectCover.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
 import Icon from '../../components/Icon.astro';
 import { projects } from '../../data/projects';
 export function getStaticPaths() {
@@ -10,6 +10,15 @@ export function getStaticPaths() {
   }));
 }
 const { project, next } = Astro.props;
+const responsibilitiesTitle =
+  project.responsibilitiesLabel ?? (project.kind === 'concept' ? '设计范围' : '我的职责');
+const sections = [
+  { id: 'background', title: '项目背景' },
+  { id: 'responsibilities', title: responsibilitiesTitle },
+  ...(project.architecture.length ? [{ id: 'structure', title: '技术架构' }] : []),
+  ...(project.challenges.length ? [{ id: 'challenges', title: '难点与方案' }] : []),
+  { id: 'reflection', title: '延伸思考' },
+];
 ---
 
 <BaseLayout title={`${project.name} · 项目案例 · 严加恩`} description={project.summary}>
@@ -28,28 +37,32 @@ const { project, next } = Astro.props;
       )}
     </div>
     <div class="project-facts">
+      {project.period && (
+        <div>
+          <span>时间</span>
+          <strong>{project.period}</strong>
+        </div>
+      )}
+      {project.role && (
+        <div>
+          <span>{project.kind === 'concept' ? '设计范围' : '我的角色'}</span>
+          <strong>{project.role}</strong>
+        </div>
+      )}
       <div>
-        <span>时间</span>
-        <strong>{project.period}</strong>
-      </div>
-      <div>
-        <span>{project.kind === 'concept' ? '设计范围' : '我的角色'}</span>
-        <strong>{project.role}</strong>
-      </div>
-      <div>
-        <span>核心技术</span>
+        <span>{project.tagsLabel ?? '核心技术'}</span>
         <strong>{project.tags.join(' / ')}</strong>
       </div>
     </div>
-    <ProjectCover project={project} />
+    <ProjectGallery project={project} />
     <div class="detail-content">
       <aside class="detail-sidebar">
         <span class="eyebrow">IN THIS PROJECT</span>
-        <a href="#background">01 项目背景</a>
-        <a href="#responsibilities">02 {project.kind === 'concept' ? '设计范围' : '我的职责'}</a>
-        <a href="#structure">03 技术架构</a>
-        <a href="#challenges">04 难点与方案</a>
-        <a href="#reflection">05 延伸思考</a>
+        {sections.map((section, index) => (
+          <a href={`#${section.id}`}>
+            {String(index + 1).padStart(2, '0')} {section.title}
+          </a>
+        ))}
         <div class="project-external">
           {project.github ? (
             <a href={project.github} target="_blank" rel="noreferrer">
@@ -73,42 +86,47 @@ const { project, next } = Astro.props;
           <p>{project.background}</p>
         </section>
         <section id="responsibilities">
-          <h2>{project.kind === 'concept' ? '设计范围' : '我的职责'}</h2>
+          <h2>{responsibilitiesTitle}</h2>
+          {project.evidenceNote && <p class="muted">{project.evidenceNote}</p>}
           <ul>
             {project.responsibilities.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
         </section>
-        <section id="structure">
-          <h2>技术架构</h2>
-          <p class="muted">
-            {project.kind === 'concept' ? '以下为拟议架构。' : '根据项目经历整理的简化结构。'}
-          </p>
-          <ol class="detail-architecture">
-            {project.architecture.map((layer, index) => (
-              <li>
-                <span class="mono">0{index + 1}</span>
-                {layer}
-              </li>
-            ))}
-          </ol>
-        </section>
-        <section id="challenges">
-          <h2>难点与方案</h2>
-          {project.challenges.map((challenge) => (
-            <div class="challenge">
-              <h3>{challenge.title}</h3>
-              <p>{challenge.problem}</p>
-              <div>
-                <span class="challenge-label">
-                  {project.kind === 'concept' ? '设计思路' : '处理方式'}
-                </span>
-                <p>{challenge.solution}</p>
+        {project.architecture.length > 0 && (
+          <section id="structure">
+            <h2>技术架构</h2>
+            <p class="muted">
+              {project.kind === 'concept' ? '以下为拟议架构。' : '根据项目经历整理的简化结构。'}
+            </p>
+            <ol class="detail-architecture">
+              {project.architecture.map((layer, index) => (
+                <li>
+                  <span class="mono">0{index + 1}</span>
+                  {layer}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+        {project.challenges.length > 0 && (
+          <section id="challenges">
+            <h2>难点与方案</h2>
+            {project.challenges.map((challenge) => (
+              <div class="challenge">
+                <h3>{challenge.title}</h3>
+                <p>{challenge.problem}</p>
+                <div>
+                  <span class="challenge-label">
+                    {project.kind === 'concept' ? '设计思路' : '处理方式'}
+                  </span>
+                  <p>{challenge.solution}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
+        )}
         <section id="reflection">
           <h2>延伸思考</h2>
           <p>{project.reflection}</p>
